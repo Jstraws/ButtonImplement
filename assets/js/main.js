@@ -7,11 +7,20 @@ var mainState = {
         this.button = game.add.sprite(300, 240, 'btn');
         this.button.anchor.setTo(0.5, 0.5);
         this.button.scale.setTo(.25);
+
+        this.button.inputEnabled = true;
         this.button.input.useHandCursor = true;
 
+        this.button.events.onInputDown.add(this.onDown, this);
+        this.button.events.onInputUp.add(this.onUp, this);
     },
 
-    update: function () {
+    onDown: function () {
+        this.button.frame = 1;
+    },
+
+    onUp: function () {
+        this.button.frame = 0;
     }
 };
 
